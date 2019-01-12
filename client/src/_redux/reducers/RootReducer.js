@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import Test from './Test'
+import { produce } from './searchReducers'
 
 export default combineReducers ({
-  Test
+  produce
 })

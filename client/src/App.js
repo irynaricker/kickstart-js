@@ -4,7 +4,7 @@ import MapView from './views/MapView';
 import Login from './views/Login';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   state = {
     currentView: `map`
   }
@@ -29,10 +29,3 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ Test }) => {
-  return {
-    hmm: Test.text,
-  }
-}
-
-export default connect(mapStateToProps)(App)
