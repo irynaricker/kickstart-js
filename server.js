@@ -3,14 +3,41 @@ const mongoose = require('mongoose');
 const config = require('./server/config');
 const path = require('path');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy
+const expressSession = require('express-session');
 
 mongoose.connect(config.mongoUri)
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = config.port;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configuring Passport
+app.use(expressSession({ secret: 'someSecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy((username, password, done) =>
+  User.authenticate(username, password, (err, user) => {
+    if (err) return done(err);
+    if (!user) return done(null, false);
+
+    return done(null, user);
+  })
+));
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  user.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 // To Do List / Faux data store
 let toDoList = [
