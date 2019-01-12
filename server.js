@@ -7,7 +7,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const expressSession = require('express-session');
 
-mongoose.connect(config.mongoUri)
+mongoose.connect(config.mongoUri);
+require('./server/models/Produce');
+require('./server/models/Pickup');
 
 const app = express();
 const port = config.port;
@@ -39,24 +41,6 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-// To Do List / Faux data store
-let toDoList = [
-  'Create an awesome hackathon project!',
-  'Don\'t forget to take a break'
-];
-
-// API calls
-app.get('/api/hello', (req, res) => {
-  res.send({ toDoList });
-});
-
-app.post('/api/addItem', (req, res) => {
-  // displays in the terminal
-  console.log(req.body);
-  toDoList.push(req.body.post);
-  res.send('Item added!');
-});
-
 // if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
@@ -69,5 +53,6 @@ app.post('/api/addItem', (req, res) => {
 
 require('./server/routes/user')(app)
 require('./server/routes/produce')(app)
+require('./server/routes/pickup')(app)
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
