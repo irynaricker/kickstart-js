@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ggLogo from '../assets/gg_logo.jpg';
-import Map from '../components/Map';
+import GoogleMapReact from 'google-map-react';
+import MapVeggie from '../components/MapVeggie';
 import './MapView.css';
 
 //import { UpdateText } from './_redux/actions/test'
 
 class MapView extends Component {
+    static defaultProps = {
+        center: {
+            lat: 45.5287776,
+            lng: -122.6431699
+        },
+        zoom: 13
+        };
   state = {
   };
 
@@ -23,11 +31,27 @@ class MapView extends Component {
           <img src={ggLogo} alt="Growing Gardens"/>
           <h3>{mapDescription}</h3>
         </header>
-        <Map/>
-      </div>
+        {/* // Important! Always set the container height explicitly */}
+        <div id="map" style={{ height: '90vh', width: '100%' }}>
+        <GoogleMapReact
+            bootstrapURLKeys={{ key: 'AIzaSyDK6IbyqSKZFxGg6pcUPaprF8HDHRHcRVY' }}
+            defaultCenter={this.props.center}
+            defaultZoom={this.props.zoom}
+        >
+            <MapVeggie
+            lat={45.5287205}
+            lng={-122.6432165}
+            // produce=thisProduce
+            // user= thisUser
+            currentZoom={this.props.zoom}
+            />
+        </GoogleMapReact>
+        </div>
+    </div>
     );
-  }
+    }
 }
+     
 
 const mapStateToProps = ({ Test }) => {
   return {
@@ -36,3 +60,4 @@ const mapStateToProps = ({ Test }) => {
 }
 
 export default connect(mapStateToProps)(MapView)
+
