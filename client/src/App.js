@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
-import ListItem from './ListItem.js';
 import { connect } from 'react-redux'
-
-import { UpdateText } from './_redux/actions/test'
-
-import Login from './views/Login'
+import MapView from './views/MapView';
+import Login from './views/Login';
+import './App.css';
 
 class App extends Component {
   state = {
-    currentView: `Login`
+    currentView: `map`
   }
 
   componentSwitcher = () => {
     const components = {
       login: <Login />
       // , register: ()
-      // , map: ()
+      , map: <MapView/>
       // , share: ()
     }
 
@@ -26,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
+        {this.componentSwitcher()}
       </div>
     )
   }

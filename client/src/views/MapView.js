@@ -43,7 +43,6 @@ class MapView extends Component {
             lng={-122.6432165}
             // produce=thisProduce
             // user= thisUser
-            currentZoom={this.props.zoom}
             />
         </GoogleMapReact>
         </div>

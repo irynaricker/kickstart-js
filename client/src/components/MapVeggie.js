@@ -7,12 +7,7 @@ export default class MapVeggie extends Component {
   static propTypes = {
     produce: PropTypes.object,
     user: PropTypes.object,
-    currentZoom: PropTypes.number
   };
-
-  getResposiveHeight(zoom) {
-      return zoom;
-  }
 
   render() {
       const exampleProduce = {
@@ -20,10 +15,7 @@ export default class MapVeggie extends Component {
       }
       
       const { type } = exampleProduce;
-      const { currentZoom } = this.props;
-      const iconHeight = this.getResposiveHeight(currentZoom)
 
-      console.log('current zoom:' + currentZoom);
     return (
        <div className="map-veggie">
           <img style={{ height: '3em', width: 'auto' }} src={CarrotIcon} alt={`${type} available here!`}/>
