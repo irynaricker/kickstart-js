@@ -4,7 +4,7 @@ const config = {
   development: {
     mongooseDebug: true,
     mongoUri: 'mongodb://localhost/gardens',
-    port: 5001
+    port: 5000
   },
   production: {
     mongooseDebug: false,
