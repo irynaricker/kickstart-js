@@ -20,15 +20,22 @@ module.exports = app => {
           picture: req.body.picture
         }, (err) => {
           if (err) return res.status(500)
-          return res.send('new user created').status(200)
+          // new user created
+          return res.json({
+            displayname: req.body.displayname,
+            username: req.body.email,
+            phone: req.body.phone,
+            picture: req.body.picture
+          }).status(200)
         })
       }
-      res.send('authenticated').status(200)
+      // user password matches
+      res.json({
+        displayname: req.body.displayname,
+        username: req.body.email,
+        phone: req.body.phone,
+        picture: req.body.picture
+      }).status(200)
     })
-  });
-
-  app.get('/user/:id',
-    function (req, res) {
-      res.render('id', { username: req.email });
   });
 };
