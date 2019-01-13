@@ -1,7 +1,6 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TomatoIcon from './../assets/tomato.png';
+import CarrotIcon from './../assets/carrot.png';
 
 export default class MapVeggie extends Component {
   static propTypes = {
@@ -14,16 +13,8 @@ export default class MapVeggie extends Component {
 
     return (
        <div className="map-veggie">
-          <img style={{ height: '3em', width: 'auto' }} src={TomatoIcon} alt={`${produceType} available here!`}/>
+          <img style={{ height: '3em', width: 'auto' }} src={CarrotIcon} alt={`${produceType} available here!`}/>
        </div>
     );
   }
 }
-
-// const mapStateToProps = ({ Test }) => {
-//   return {
-//     hmm: Test.text,
-//   }
-// }
-
-// export default connect(mapStateToProps)(MapView)

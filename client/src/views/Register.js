@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import FlexContainer from '../components/FlexContainer'
 import FlexColumn from '../components/FlexColumn'
-import FlexRow from '../components/FlexRow'
 import Button from '../components/Button'
 
 class Register extends Component {

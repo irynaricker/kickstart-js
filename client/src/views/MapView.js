@@ -54,7 +54,7 @@ class MapView extends Component {
                         return <MapVeggie
                             key = {i}
                             lat={result.pickUpLocation.lat}
-                            lng={result.pickUpLocation.lng}
+                            lng={result.pickUpLocation.long}
                             produce={result}
                             //user
                         />
@@ -68,8 +68,7 @@ class MapView extends Component {
      
 const mapStateToProps = ({ produce }) => {
     return {
-       results: produce.results,
-       error: produce.error
+       results: produce
     }
   }
   
