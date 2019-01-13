@@ -22,6 +22,12 @@ class MapView extends Component {
         results: PropTypes.array,
     }
 
+    componentDidUpdate(prevProps) {
+        if( prevProps.results !== this.props.results ) {
+            console.log(this.props.results);
+        }
+    }
+
     mapControlOptions() {
         return {
             'gestureHandling': 'greedy',
@@ -66,11 +72,11 @@ class MapView extends Component {
                         ...this.mapControlOptions()
                     }}
                     >
-                    {exampleResults.map( (result, i) => {
+                    {this.props.results.map( (result, i) => {
                         return <MapVeggie
                             key = {i}
-                            lat={45.5287205}
-                            lng={-122.6432165}
+                            lat={result.pickUpLocation.lat}
+                            lng={result.pickUpLocation.lng}
                             produce={result}
                             //user
                         />
@@ -83,7 +89,6 @@ class MapView extends Component {
 }
      
 const mapStateToProps = ({ produce }) => {
-    console.log(produce);
     return {
        results: produce.results,
        error: produce.error
