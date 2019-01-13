@@ -5,11 +5,12 @@ export default styled.button`
   height: 10vh;
   padding: 10px;
   margin: 20px;
-  background-color: #4C6653;
+  background-color: #4C7E16;
 
   color: #FFF;
   font-size: 24px;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
 
   @media screen and (max-device-width: 414px) {
     width: 50vw;
