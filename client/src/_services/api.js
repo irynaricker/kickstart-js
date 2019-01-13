@@ -1,4 +1,4 @@
-import { get, post, put, del, exGet } from './request';
+import { get } from './request';
 
 const URL = 'http://localhost:5000/produce';
 

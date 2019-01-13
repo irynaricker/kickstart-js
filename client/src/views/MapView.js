@@ -36,28 +36,6 @@ class MapView extends Component {
     }
 
     render() {
-        const mapDescription = 'Map map map map';
-        const exampleProduce = { 
-            "produceType": "vegetable",
-            "variety":"orange",
-            "produceAmount": 12,
-            "produceName": "Pinapple",
-            "availability":{
-                "date": "12334566"
-            },
-            "pickUpLocation": {
-                "address": "2203 NE Oregon St",
-                "city": "Portland",
-                "state": "OR",
-                "zip":98765
-                },
-            "organic": true,
-            "seedSource": "Oregon",
-            "description": ""
-            }
-        const exampleResults = [ exampleProduce, exampleProduce ];
-
-
         return (
         <div id="map-view">
             <Search />
@@ -76,7 +54,7 @@ class MapView extends Component {
                         return <MapVeggie
                             key = {i}
                             lat={result.pickUpLocation.lat}
-                            lng={result.pickUpLocation.lng}
+                            lng={result.pickUpLocation.long}
                             produce={result}
                             //user
                         />
@@ -90,8 +68,7 @@ class MapView extends Component {
      
 const mapStateToProps = ({ produce }) => {
     return {
-       results: produce.results,
-       error: produce.error
+       results: produce
     }
   }
   

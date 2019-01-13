@@ -4,7 +4,7 @@ function request(url, options = {}, data) {
   if(data) options.body = JSON.stringify(data);
   options.mode = 'cors'
 
-  return fetch(url, options);
+    return fetch(url, options)
 }
 
 const headers = {

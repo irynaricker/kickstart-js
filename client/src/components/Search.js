@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import ggLogo from '../assets/gg_logo.jpg';
 import { loadProduce } from '../_redux/actions/searchActions';
 import queryString from 'query-string';
-import CarrotIcon from '../assets/carrot.png';
-import TomatoIcon from '../assets/tomato.png';
 
-import PropTypes from 'prop-types';
-
-export default class Search extends Component {
+class Search extends Component {
 
     state = {
       produceType: '',
@@ -30,18 +27,14 @@ export default class Search extends Component {
     }
 
     handleSearch() {
-        loadProduce(this.state.produceType, this.state.variety);
+        this.props.dispatch(loadProduce(this.state.produceType, this.state.variety));
     }
 
     handleSelect(e) {
         this.setState({produceType: e.target.value});
-    
     }
 
-
   render() {
-    const mapDescription = 'Map map map map';
-
     return (
         <header className="map-header">
           <img src={ggLogo} alt="Growing Gardens"/>
@@ -50,19 +43,26 @@ export default class Search extends Component {
               <li>Click on the produce type icon. </li>
               <li>Click Get! to schedule a pickup time. </li>
           </ol>
-        <label htmlFor="type">
-            <h3>Type:</h3>
-        </label>
-          <select id="type-select" onChange={(e) => this.handleSelect(e)}>
-            <option value="Carrot">
-                Carrots
-            </option>
-            <option value="Tomato">
-                Tomatoes
-            </option>
-          </select>
+
+        <div id="search">
+            <label htmlFor="type">
+                <h3>Type:</h3>
+            </label>
+            <select id="type-select" onChange={(e) => this.handleSelect(e)}>
+                <option value="vegetable">
+                    Vegetables
+                </option>
+                <option value="carrot">
+                    Carrots
+                </option>
+                <option value="tomato">
+                    Tomatoes
+                </option>
+            </select>
+          </div>
         </header>
     );
     }
 }
 
+export default connect()(Search)

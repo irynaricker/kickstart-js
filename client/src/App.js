@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import MapView from './views/MapView';
 import Login from './views/Login';
 import Register from './views/Register';

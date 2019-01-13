@@ -1,12 +1,10 @@
-#map-view {
-
-}
 
 #map-view header {
     height: 10vh;
     min-height: 5em;
     background-color: #4C6653;
     display: flex;
+    justify-content: space-between;
 }
 
 #map-view header img {
@@ -19,4 +17,8 @@
 
 #map {
     height: 90vh;
+}
+
+#map-view #search {
+    
 }
