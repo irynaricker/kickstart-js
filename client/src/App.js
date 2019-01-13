@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import MapView from './views/MapView';
 import Login from './views/Login';
+import Register from './views/Register';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   state = {
-    currentView: `map`
+    currentView: `login`
   }
 
   componentSwitcher = () => {
     const components = {
-      login: <Login />
-      // , register: ()
-      , map: <MapView/>
+      login: <Login nav={view => this.setState({ currentView: `map` })} />
+      , register: <Register nav={view => this.setState({ currentView: view })} />
+      , map: <MapView nav={view => this.setState({ currentView: view })} />
       // , share: ()
     }
 
@@ -29,10 +30,3 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ Test }) => {
-  return {
-    hmm: Test.text,
-  }
-}
-
-export default connect(mapStateToProps)(App)
