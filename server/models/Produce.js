@@ -15,7 +15,9 @@ const produceSchema = new Schema({
         address: String,
         city: String,
         state: String,
-        zip: Number
+        zip: Number,
+        lat: Number,
+        long: Number,
     },
     organic: { type: Boolean, default: false },
     seedSource: String,
