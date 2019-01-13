@@ -10,3 +10,11 @@ h2 {}
 h3 {
     color: white;
 }
+
+ol {
+  color: white;
+}
+
+li {
+  text-align:left;
+}
