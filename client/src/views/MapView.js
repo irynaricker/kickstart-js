@@ -36,28 +36,6 @@ class MapView extends Component {
     }
 
     render() {
-        const mapDescription = 'Map map map map';
-        const exampleProduce = { 
-            "produceType": "vegetable",
-            "variety":"orange",
-            "produceAmount": 12,
-            "produceName": "Pinapple",
-            "availability":{
-                "date": "12334566"
-            },
-            "pickUpLocation": {
-                "address": "2203 NE Oregon St",
-                "city": "Portland",
-                "state": "OR",
-                "zip":98765
-                },
-            "organic": true,
-            "seedSource": "Oregon",
-            "description": ""
-            }
-        const exampleResults = [ exampleProduce, exampleProduce ];
-
-
         return (
         <div id="map-view">
             <Search />
